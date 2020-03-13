@@ -28,13 +28,9 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-
-  export CXXFLAGS+=" -I${srcdir}/${pkgname}-${pkgver}"
-  ./configure --enable-gc=/usr \
-              --prefix=/usr \
+  ./configure --prefix=/usr \
               --with-latex=/usr/share/texmf/tex/latex \
-              --with-context=/usr/share/texmf/tex/context \
-              --enable-offscreen
+              --with-context=/usr/share/texmf/tex/context
   make all
 }
 
