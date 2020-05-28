@@ -1,0 +1,28 @@
+# Maintainer: Lars Haalck <lars.haalck@posteo.de>
+
+pkgname=time
+pkgver=1.9
+pkgrel=1
+pkgdesc="GNU time"
+arch=('x86_64')
+url="https://www.gnu.org/software/time/"
+license=("GPL3")
+source=("https://ftp.gnu.org/pub/gnu/time/time-1.9.tar.gz")
+md5sums=('d2356e0fe1c0b85285d83c6b2ad51b5f')
+
+build() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  ./configure --prefix=/usr
+  make all
+}
+
+check() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make check
+}
+
+package() {
+  cd "${srcdir}/${pkgname}-${pkgver}"
+  make DESTDIR="${pkgdir}" install
+}
+
