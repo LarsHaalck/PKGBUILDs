@@ -18,8 +18,8 @@ makedepends=('ghostscript' 'imagemagick'
              'glu')
 optdepends=('python-pyqt5: for the xasy GUI'
             'python-cson:  for the xasy GUI')
-source=("https://github.com/vectorgraphics/asymptote/archive/${pkgver}.tar.gz")
-sha1sums=('7e0765b36d828c4f039ba4a0709ccad1c75ba44d')
+source=("https://downloads.sourceforge.net/sourceforge/${pkgname}/${pkgname}-${pkgver}.src.tgz")
+md5sums=('97b80ad03dfbcad7cae0fdb2c666fdb5')
 
 prepare() {
   cd "${srcdir}/${pkgname}-${pkgver}"
@@ -28,9 +28,13 @@ prepare() {
 
 build() {
   cd "${srcdir}/${pkgname}-${pkgver}"
-  ./configure --prefix=/usr \
+
+  export CXXFLAGS+=" -I${srcdir}/${pkgname}-${pkgver}"
+  ./configure --enable-gc=/usr \
+              --prefix=/usr \
               --with-latex=/usr/share/texmf/tex/latex \
-              --with-context=/usr/share/texmf/tex/context
+              --with-context=/usr/share/texmf/tex/context \
+              --enable-offscreen
   make all
 }
 
