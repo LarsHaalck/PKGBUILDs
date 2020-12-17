@@ -1,0 +1,20 @@
+# Maintainer: Lars Haalck <lars.haalck@posteo.de>
+
+pkgname=fiji
+pkgver=1.0
+pkgrel=1
+pkgdesc="FIJI"
+arch=('x86_64')
+url="https://imagej.net/Fiji"
+license=("GPL2")
+source=("https://downloads.imagej.net/fiji/latest/fiji-linux64.zip")
+md5sums=('faedf19dc2ff6f3f08284d775a6ab866')
+
+package() {
+  cd "${srcdir}"
+  mkdir -p "${pkgdir}/opt/fiji"
+  mkdir -p "${pkgdir}/usr/bin"
+  cp -R Fiji.app/* "${pkgdir}/opt/fiji"
+  ln -sf "/opt/fiji/ImageJ-linux64" "${pkgdir}/usr/bin/fiji"
+}
+
