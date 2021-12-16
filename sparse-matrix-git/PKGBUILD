@@ -1,6 +1,6 @@
 # Maintainer: Lars Haalck
-pkgname=sparse-git
-pkgver=r54.5502c4d
+pkgname=sparse-matrix-git
+pkgver=r83.0274033
 pkgrel=1
 pkgdesc='A tui matrix client '
 arch=('i686' 'x86_64')
